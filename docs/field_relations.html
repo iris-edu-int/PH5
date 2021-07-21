@@ -1,0 +1,177 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Experiment group: &#8212; PH5 File Format 0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="experiment-group">
+<h1>Experiment group:<a class="headerlink" href="#experiment-group" title="Permalink to this headline">¶</a></h1>
+<p>This HDF5 group is the top level group for the file.  All other groups
+mentioned in subsequent sections are under this group.  There also exists an
+experiment table which contains general information on the experiment such as
+enumerating PIs and institutions involved.  The experiment table does not
+contain any direct references however it holds the northwest and southeast
+corners to define a rough geographic boundary of experiment data.</p>
+</div>
+<div class="section" id="receivers-group">
+<h1>Receivers group:<a class="headerlink" href="#receivers-group" title="Permalink to this headline">¶</a></h1>
+<p>This group holds the binary information from DAS units.  Within this group
+there are typically many individual DAS_g_XXXX (XXXX is serial number).  Within
+each DAS group data is further distributed into individual Data_a_XXXX arrays
+hold the time series or “waveform” data for a particular DAS can be found
+in DAS_g_XXXX.Das_t.  The Das_t table has the following references to other tables:</p>
+<blockquote>
+<div><ul class="simple">
+<li>DAS_g_XXXX.Das_t.array_name_data_a to a particular Data_a_XXXX</li>
+<li>DAS_g_XXXX.Das_t.receiver_table_n_i to Receivers_g.Receiver_t.(implied_index)</li>
+<li>DAS_g_XXXX.Das_t.response_table_n_i to Response_g.Response_t.n_i</li>
+</ul>
+</div></blockquote>
+<p>Additionally within the receivers group, three tables exist for additional data
+attributes.  First, DAS_g_XXXX.index_t references exactly which mini file each
+DASes information and provides start and end times of data if temporal sorting
+is desired.  Second, receiver_t holds orientation information that is
+referenced by Sorts_g.Array_t.receiver_table_n_i and
+DAS_g_XXXX.Das_t.receiver_table_n_i.  Thirdly, for DASes which do not auto
+correct clock time_t provides slope and offset for this purpose.</p>
+</div>
+<div class="section" id="maps-group">
+<h1>Maps group:<a class="headerlink" href="#maps-group" title="Permalink to this headline">¶</a></h1>
+<p>Additional tables are created when ingesting segd or segy files.  These tables
+are similar to Receiver group’s DAS_g_XXXX.index_t and references exactly which
+mini file each DASes information and provides start and end times of data if
+temporal sorting is desired.  These DAS_g_XXXX.index_t are listed in
+Maps_g.index_t so that each individual DAS can be referenced.</p>
+</div>
+<div class="section" id="reports-group">
+<h1>Reports group:<a class="headerlink" href="#reports-group" title="Permalink to this headline">¶</a></h1>
+<p>This group holds any reports related to the experiment.  There are no direct or
+explicit relations between this group and any other within the archive.</p>
+</div>
+<div class="section" id="responses-group">
+<h1>Responses group:<a class="headerlink" href="#responses-group" title="Permalink to this headline">¶</a></h1>
+<p>The response group contains response information for the sensor data logger
+combinations.  These responses are referenced by both sorts and receivers
+groups and these specific references are documented in those specific sections.</p>
+</div>
+<div class="section" id="sorts-group">
+<h1>Sorts group:<a class="headerlink" href="#sorts-group" title="Permalink to this headline">¶</a></h1>
+<p>This group is responsible for relating and providing references to arrays,
+events, and responses stored in all the other groups and tables.</p>
+<p><strong>Event_t</strong> lists the shot events time, location, and potentially magnitude the
+id_s is later referenced in Event_t_XXX tables.</p>
+<p><strong>Offset_t_XXX_XXX</strong> (Offset_t_array#_event#) are tables which describe angle
+and physical distance between array and events.</p>
+<p><strong>Sort_t</strong> table summarizes arrays versus times which allows one to further
+reference Array_t_XXX tables for more specifics.</p>
+<div class="section" id="array-t-xxx">
+<h2>Array_t_XXX:<a class="headerlink" href="#array-t-xxx" title="Permalink to this headline">¶</a></h2>
+<p>Is a logical grouping location, deploy times, and DAS / Sensor information.
+Each id represents a station. Each row is a different channel of a given
+sensor.  There are two key references to other tables:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Array_t.response_table_n_i points to Response_g.Response_t.n_i</li>
+<li>Array_t.receiver_table_n_i points to Receivers_g.Receiver_t.(implied_index)</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Experiment group:</a></li>
+<li><a class="reference internal" href="#receivers-group">Receivers group:</a></li>
+<li><a class="reference internal" href="#maps-group">Maps group:</a></li>
+<li><a class="reference internal" href="#reports-group">Reports group:</a></li>
+<li><a class="reference internal" href="#responses-group">Responses group:</a></li>
+<li><a class="reference internal" href="#sorts-group">Sorts group:</a><ul>
+<li><a class="reference internal" href="#array-t-xxx">Array_t_XXX:</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/field_relations.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020 IRIS PASSCAL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/field_relations.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

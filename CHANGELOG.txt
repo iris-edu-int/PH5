@@ -1,4 +1,8 @@
 Master:
+docs
+ * Added inital compiled verison.  Use docsrc for changes.
+docsrc
+ * Added reStructuredText documentation for file format.
 ph5
  * fixed malformed created timestamp in stationxml from ph5tostationxml
    and added testcase to ensure timestamps are well formed

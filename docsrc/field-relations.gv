@@ -1,0 +1,81 @@
+// Use https://dreampuf.github.io/GraphvizOnline/ to create svg
+
+digraph G {
+    node [shape=plain];
+    rankdir=LR;
+
+    table_Time_t [label=<
+<table border="0" cellborder="1" cellspacing="0">
+<tr><td><i>Receivers_g.Time_t</i></td></tr>
+<tr><td port="implied_index">implied_index</td></tr>
+</table>>]
+
+    table_Receiver_t [label=<
+<table border="0" cellborder="1" cellspacing="0">
+<tr><td><i>Receivers_g.Receiver_t</i></td></tr>
+<tr><td port="implied_index">implied_index</td></tr>
+</table>>]
+
+    table_Response_t [label=<
+<table border="0" cellborder="1" cellspacing="0">
+<tr><td><i>Response_g.Response_t</i></td></tr>
+<tr><td port="n_i">n_i</td></tr>
+</table>>]
+
+    table_Event_t [label=<
+<table border="0" cellborder="1" cellspacing="0">
+<tr><td><i>Sorts_g.Event_t</i></td></tr>
+<tr><td port="id_s">id_s</td></tr>
+</table>>]
+
+    table_Data_a [label=<
+<table border="0" cellborder="1" cellspacing="0">
+<tr><td><i>Receivers_g.Das_g_XXXXX.Data_a</i></td></tr>
+<tr><td port="data">data</td></tr>
+</table>>]
+
+    table_Das_t [label=<
+<table border="0" cellborder="1" cellspacing="0">
+<tr><td><i>Receivers_g.Das_g_XXXXX.Das_t</i></td></tr>
+<tr><td port="array_name_data_a">array_name_data_a</td></tr>
+<tr><td port="receiver_table_n_i">receiver_table_n_i</td></tr>
+<tr><td port="response_table_n_i">response_table_n_i</td></tr>
+<tr><td port="time_table_n_i">time_table_n_i</td></tr>
+</table>>]
+
+table_Array_t [label=<
+<table border="0" cellborder="1" cellspacing="0">
+<tr><td><i>Array_t_XXX</i></td></tr>
+<tr><td port="receiver_table_n_i">receiver_table_n_i</td></tr>
+<tr><td port="response_table_n_i">response_table_n_i</td></tr>
+</table>>]
+
+table_Offset_t [label=<
+<table border="0" cellborder="1" cellspacing="0">
+<tr><td><i>Sorts_g.Offset_t_XXX_YYY</i></td></tr>
+<tr><td port="event_id_s">event_id_s</td></tr>
+</table>>]
+
+table_Sort_t [label=<
+<table border="0" cellborder="1" cellspacing="0">
+<tr><td><i>Sorts_g.Sort_t</i></td></tr>
+<tr><td port="array_t_name_s">array_t_name_s</td></tr>
+</table>>]
+
+    // Cross table references
+    table_Das_t:receiver_table_n_i -> table_Receiver_t:implied_index;
+    table_Array_t:receiver_table_n_i -> table_Receiver_t:implied_index;
+
+    table_Das_t:response_table_n_i -> table_Response_t:n_i;
+    table_Array_t:response_table_n_i -> table_Response_t:n_i;
+
+    table_Offset_t:event_id_s -> table_Event_t:id_s;
+//    "Sort_t.event_id_s" -> "Event_t.id_s" Blank in example
+
+    table_Das_t:time_table_n_i -> table_Time_t:implied_index;
+
+    table_Sort_t:array_t_name_s -> table_Array_t:receiver_table_n_i;
+
+    // Note desintation node is a hack just pointing to table
+    table_Das_t:array_name_data_a -> table_Data_a;
+}

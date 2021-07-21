@@ -1,0 +1,1091 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Receivers_g &#8212; PH5 File Format 0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="receivers-g">
+<h1>Receivers_g<a class="headerlink" href="#receivers-g" title="Permalink to this headline">¶</a></h1>
+<p>The receivers group holds trace data, metadata related to trace data, and links to the miniPH5_#####.ph5 files
+containing timeseries data.</p>
+<div class="section" id="das-g-xxxxx">
+<h2>Das_g_xxxxx<a class="headerlink" href="#das-g-xxxxx" title="Permalink to this headline">¶</a></h2>
+<p>Holds data from a given data logger or station.  “xxxxxx” is based off serial number of
+data aquisition system (DAS).</p>
+<div class="section" id="data-a-xxxx">
+<h3>Data_a_xxxx<a class="headerlink" href="#data-a-xxxx" title="Permalink to this headline">¶</a></h3>
+<p>The data array holds binary time series or textural data, usually in 32 bit
+floats or 32 bit integers.  This data originated from DAS raw files.</p>
+</div>
+<div class="section" id="das-t">
+<h3>Das_t<a class="headerlink" href="#das-t" title="Permalink to this headline">¶</a></h3>
+<p>The das table holds information about the data from a given data logger.  This table
+links Data_a_xxxx to which raw file it came from and in the case of a multiple channel
+DAS which channel a given.</p>
+<div class="section" id="array-name-soh-a">
+<h4>array_name_SOH_a<a class="headerlink" href="#array-name-soh-a" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 16 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">State of health from logger if applicable to given instrument</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="array-name-data-a">
+<h4>array_name_data_a<a class="headerlink" href="#array-name-data-a" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 16 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Reference to array where raw data is stored.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="array-name-event-a">
+<h4>array_name_event_a<a class="headerlink" href="#array-name-event-a" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 16 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Used by RT125s for datalogger events not shot or earthquake events. This is populated from the
+“event table” that is programmed into the rt125 that describe how and when to record.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="array-name-log-a">
+<h4>array_name_log_a<a class="headerlink" href="#array-name-log-a" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 16 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">These are ASCII logs from the dataloggeer that record operational
+information.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="channel-number-i">
+<h4>channel_number_i<a class="headerlink" href="#channel-number-i" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 8</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Channel number from DAS typically each channel is an axis of a
+geophone or seismometer.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="event-number-i">
+<h4>event_number_i<a class="headerlink" href="#event-number-i" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 32</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">This correlates event number to where data is stored in PH5.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="raw-file-name-s">
+<h4>raw_file_name_s<a class="headerlink" href="#raw-file-name-s" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 32 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Name of the raw file from data logger i.e. *.TRD which has been
+ingested by PH5.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="receiver-table-n-i">
+<h4>receiver_table_n_i<a class="headerlink" href="#receiver-table-n-i" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 32</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Index to receiver table located in Receivers group.  This table
+provides orientation information.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="response-table-n-i">
+<h4>response_table_n_i<a class="headerlink" href="#response-table-n-i" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 32</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Index to response table located at Response_g/Response_t.  This table
+and group provides model to change from raw bits to meaningful measurements like
+volts.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sample-count-i">
+<h4>sample_count_i<a class="headerlink" href="#sample-count-i" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 32</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Number of samples in array referenced.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sample-rate-i">
+<h4>sample_rate_i<a class="headerlink" href="#sample-rate-i" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 16</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Sampling rate (samples/second) of data stored in array.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sample-rate-multiplier-i">
+<h4>sample_rate_multiplier_i<a class="headerlink" href="#sample-rate-multiplier-i" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 16</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Sample rate multiplier needed for when sample are less than 1 SPS.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="stream-number-i">
+<h4>stream_number_i<a class="headerlink" href="#stream-number-i" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 8</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Stream number from DAS</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="time">
+<h4>time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h4>
+<p>Time from DAS trace.</p>
+</div>
+</div>
+<div class="section" id="ascii-s">
+<h3>ascii_s<a class="headerlink" href="#ascii-s" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 32 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Timestamp the table was created in an ascii format.  Example: Thu Dec 19 10:12:27 2019</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="epoch-l">
+<h3>epoch_l<a class="headerlink" href="#epoch-l" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 64</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">The timestamp in epoch seconds.  Also known as Unix time.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="micro-seconds-i">
+<h3>micro_seconds_i<a class="headerlink" href="#micro-seconds-i" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 32</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Microseconds to add to epoch</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="type-s">
+<h3>type_s<a class="headerlink" href="#type-s" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 8 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Epoch, ASCII, or BOTH</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="event-a-xxxx">
+<h3>Event_a_xxxx<a class="headerlink" href="#event-a-xxxx" title="Permalink to this headline">¶</a></h3>
+<p>The event array holds textural data about event windows programmed in the data logger.</p>
+</div>
+<div class="section" id="soh-a-xxxx">
+<h3>SOH_a_xxxx<a class="headerlink" href="#soh-a-xxxx" title="Permalink to this headline">¶</a></h3>
+<p>The SOH array holds textural data about the data logger state of health.</p>
+</div>
+<div class="section" id="log-a-xxxx">
+<h3>Log_a_xxxx<a class="headerlink" href="#log-a-xxxx" title="Permalink to this headline">¶</a></h3>
+<p>The log array holds textural log information.</p>
+</div>
+</div>
+<div class="section" id="index-t">
+<h2>Index_t<a class="headerlink" href="#index-t" title="Permalink to this headline">¶</a></h2>
+<p>This table relates mini files, hdf5 paths, and time sliced DAS data.</p>
+<div class="section" id="external-filename-s">
+<h3>external_filename_s<a class="headerlink" href="#external-filename-s" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 32 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Name of mini PH5 file used to store DAS data.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="hdf5-path-s">
+<h3>hdf5_path_s<a class="headerlink" href="#hdf5-path-s" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 64 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">HDF5 path which is typically used to reference DAS data</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="serial-number-s">
+<h3>serial_number_s<a class="headerlink" href="#serial-number-s" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 64 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">DAS serial number which data originated from.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="start-time">
+<h3>start_time<a class="headerlink" href="#start-time" title="Permalink to this headline">¶</a></h3>
+<p>Start time of reference.</p>
+</div>
+<div class="section" id="id1">
+<h3>ascii_s<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 32 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Timestamp the table was created in an ascii format.  Example: Thu Dec 19 10:12:27 2019</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h3>epoch_l<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 64</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">The timestamp in epoch seconds.  Also known as Unix time.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h3>micro_seconds_i<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 32</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Microseconds to add to epoch</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h3>type_s<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 8 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Epoch, ASCII, or BOTH</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="end-time">
+<h3>end_time<a class="headerlink" href="#end-time" title="Permalink to this headline">¶</a></h3>
+<p>End time of reference.</p>
+</div>
+<div class="section" id="id5">
+<h3>ascii_s<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 32 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Timestamp the table was created in an ascii format.  Example: Thu Dec 19 10:12:27 2019</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h3>epoch_l<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 64</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">The timestamp in epoch seconds.  Also known as Unix time.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id7">
+<h3>micro_seconds_i<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 32</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Microseconds to add to epoch</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id8">
+<h3>type_s<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 8 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Epoch, ASCII, or BOTH</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="time-stamp">
+<h3>time_stamp<a class="headerlink" href="#time-stamp" title="Permalink to this headline">¶</a></h3>
+<p>The time the index entry was created.</p>
+</div>
+<div class="section" id="id9">
+<h3>ascii_s<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 32 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Timestamp the table was created in an ascii format.  Example: Thu Dec 19 10:12:27 2019</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id10">
+<h3>epoch_l<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 64</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">The timestamp in epoch seconds.  Also known as Unix time.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id11">
+<h3>micro_seconds_i<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 32</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Microseconds to add to epoch</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id12">
+<h3>type_s<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 8 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Epoch, ASCII, or BOTH</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="receiver-t">
+<h2>Receiver_t<a class="headerlink" href="#receiver-t" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="orientation">
+<h3>Orientation<a class="headerlink" href="#orientation" title="Permalink to this headline">¶</a></h3>
+<p>Channel orientation of sensor.  This information is referenced via Das_t</p>
+<div class="section" id="description-s">
+<h4>description_s<a class="headerlink" href="#description-s" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 1024 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Description of orientation.  Typically a short hand such as
+N, E, or Z.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id13">
+<h4>channel_number_i<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 8</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Channel number within DAS however since rest of file is
+broken up by channel typically 0.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="azimuth">
+<h4>azimuth<a class="headerlink" href="#azimuth" title="Permalink to this headline">¶</a></h4>
+<p>Azimuth angle of sensor channel.</p>
+<div class="section" id="value-f">
+<h5>value_f<a class="headerlink" href="#value-f" title="Permalink to this headline">¶</a></h5>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">Float 32</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by coordinate system</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Orientation angle of sensor channel.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="units-s">
+<h5>units_s<a class="headerlink" href="#units-s" title="Permalink to this headline">¶</a></h5>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 16 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Unit of azimuth value typically radians or degrees.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="dip">
+<h4>dip<a class="headerlink" href="#dip" title="Permalink to this headline">¶</a></h4>
+<p>dip of station</p>
+<div class="section" id="id14">
+<h5>value_f<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h5>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">Float 32</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by coordinate system</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Dip angle of sensor channel.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id15">
+<h5>units_s<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h5>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 16 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Unit of dip value typically radians or degrees.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="time-t">
+<h2>Time_t<a class="headerlink" href="#time-t" title="Permalink to this headline">¶</a></h2>
+<p>Time table to correct for free oscillators.  Currently used by Texans.</p>
+<div class="section" id="corrected-i">
+<h3>corrected_i<a class="headerlink" href="#corrected-i" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 16</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Boolean if time was corrected.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id16">
+<h3>description_s<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 1024 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Includes station and channel from SEED file.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="offset-d">
+<h3>offset_d<a class="headerlink" href="#offset-d" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">Float 64</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by Float 64 precision</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">SEED time correction offset in units of 0.0001 per.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="slope-d">
+<h3>slope_d<a class="headerlink" href="#slope-d" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">Float 64</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by Float 64 precision</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">SEED time correction slope.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="das">
+<h3>das<a class="headerlink" href="#das" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="notes-s">
+<h4>notes_s<a class="headerlink" href="#notes-s" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 1024 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Notes field for DAS, not commonly used.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="model-s">
+<h4>model_s<a class="headerlink" href="#model-s" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 64 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Model of DAS, not commonly used.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id17">
+<h4>serial_number_s<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 64 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Serial number of DAS.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="manufacturer-s">
+<h4>manufacturer_s<a class="headerlink" href="#manufacturer-s" title="Permalink to this headline">¶</a></h4>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 64 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Manufacturer of DAS.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id18">
+<h3>start_time<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<p>Start time of correction.</p>
+</div>
+<div class="section" id="id19">
+<h3>ascii_s<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 32 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Timestamp the table was created in an ascii format.  Example: Thu Dec 19 10:12:27 2019</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id20">
+<h3>epoch_l<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 64</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">The timestamp in epoch seconds.  Also known as Unix time.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id21">
+<h3>micro_seconds_i<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 32</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Microseconds to add to epoch</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id22">
+<h3>type_s<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 8 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Epoch, ASCII, or BOTH</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id23">
+<h3>end_time<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<p>End time of correction.</p>
+</div>
+<div class="section" id="id24">
+<h3>ascii_s<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 32 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Timestamp the table was created in an ascii format.  Example: Thu Dec 19 10:12:27 2019</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id25">
+<h3>epoch_l<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 64</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">The timestamp in epoch seconds.  Also known as Unix time.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id26">
+<h3>micro_seconds_i<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int 32</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited by integer size</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Microseconds to add to epoch</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id27">
+<h3>type_s<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Range:</th><td class="field-body">Limited to 8 characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Epoch, ASCII, or BOTH</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Receivers_g</a><ul>
+<li><a class="reference internal" href="#das-g-xxxxx">Das_g_xxxxx</a><ul>
+<li><a class="reference internal" href="#data-a-xxxx">Data_a_xxxx</a></li>
+<li><a class="reference internal" href="#das-t">Das_t</a><ul>
+<li><a class="reference internal" href="#array-name-soh-a">array_name_SOH_a</a></li>
+<li><a class="reference internal" href="#array-name-data-a">array_name_data_a</a></li>
+<li><a class="reference internal" href="#array-name-event-a">array_name_event_a</a></li>
+<li><a class="reference internal" href="#array-name-log-a">array_name_log_a</a></li>
+<li><a class="reference internal" href="#channel-number-i">channel_number_i</a></li>
+<li><a class="reference internal" href="#event-number-i">event_number_i</a></li>
+<li><a class="reference internal" href="#raw-file-name-s">raw_file_name_s</a></li>
+<li><a class="reference internal" href="#receiver-table-n-i">receiver_table_n_i</a></li>
+<li><a class="reference internal" href="#response-table-n-i">response_table_n_i</a></li>
+<li><a class="reference internal" href="#sample-count-i">sample_count_i</a></li>
+<li><a class="reference internal" href="#sample-rate-i">sample_rate_i</a></li>
+<li><a class="reference internal" href="#sample-rate-multiplier-i">sample_rate_multiplier_i</a></li>
+<li><a class="reference internal" href="#stream-number-i">stream_number_i</a></li>
+<li><a class="reference internal" href="#time">time</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascii-s">ascii_s</a></li>
+<li><a class="reference internal" href="#epoch-l">epoch_l</a></li>
+<li><a class="reference internal" href="#micro-seconds-i">micro_seconds_i</a></li>
+<li><a class="reference internal" href="#type-s">type_s</a></li>
+<li><a class="reference internal" href="#event-a-xxxx">Event_a_xxxx</a></li>
+<li><a class="reference internal" href="#soh-a-xxxx">SOH_a_xxxx</a></li>
+<li><a class="reference internal" href="#log-a-xxxx">Log_a_xxxx</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#index-t">Index_t</a><ul>
+<li><a class="reference internal" href="#external-filename-s">external_filename_s</a></li>
+<li><a class="reference internal" href="#hdf5-path-s">hdf5_path_s</a></li>
+<li><a class="reference internal" href="#serial-number-s">serial_number_s</a></li>
+<li><a class="reference internal" href="#start-time">start_time</a></li>
+<li><a class="reference internal" href="#id1">ascii_s</a></li>
+<li><a class="reference internal" href="#id2">epoch_l</a></li>
+<li><a class="reference internal" href="#id3">micro_seconds_i</a></li>
+<li><a class="reference internal" href="#id4">type_s</a></li>
+<li><a class="reference internal" href="#end-time">end_time</a></li>
+<li><a class="reference internal" href="#id5">ascii_s</a></li>
+<li><a class="reference internal" href="#id6">epoch_l</a></li>
+<li><a class="reference internal" href="#id7">micro_seconds_i</a></li>
+<li><a class="reference internal" href="#id8">type_s</a></li>
+<li><a class="reference internal" href="#time-stamp">time_stamp</a></li>
+<li><a class="reference internal" href="#id9">ascii_s</a></li>
+<li><a class="reference internal" href="#id10">epoch_l</a></li>
+<li><a class="reference internal" href="#id11">micro_seconds_i</a></li>
+<li><a class="reference internal" href="#id12">type_s</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#receiver-t">Receiver_t</a><ul>
+<li><a class="reference internal" href="#orientation">Orientation</a><ul>
+<li><a class="reference internal" href="#description-s">description_s</a></li>
+<li><a class="reference internal" href="#id13">channel_number_i</a></li>
+<li><a class="reference internal" href="#azimuth">azimuth</a><ul>
+<li><a class="reference internal" href="#value-f">value_f</a></li>
+<li><a class="reference internal" href="#units-s">units_s</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dip">dip</a><ul>
+<li><a class="reference internal" href="#id14">value_f</a></li>
+<li><a class="reference internal" href="#id15">units_s</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#time-t">Time_t</a><ul>
+<li><a class="reference internal" href="#corrected-i">corrected_i</a></li>
+<li><a class="reference internal" href="#id16">description_s</a></li>
+<li><a class="reference internal" href="#offset-d">offset_d</a></li>
+<li><a class="reference internal" href="#slope-d">slope_d</a></li>
+<li><a class="reference internal" href="#das">das</a><ul>
+<li><a class="reference internal" href="#notes-s">notes_s</a></li>
+<li><a class="reference internal" href="#model-s">model_s</a></li>
+<li><a class="reference internal" href="#id17">serial_number_s</a></li>
+<li><a class="reference internal" href="#manufacturer-s">manufacturer_s</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id18">start_time</a></li>
+<li><a class="reference internal" href="#id19">ascii_s</a></li>
+<li><a class="reference internal" href="#id20">epoch_l</a></li>
+<li><a class="reference internal" href="#id21">micro_seconds_i</a></li>
+<li><a class="reference internal" href="#id22">type_s</a></li>
+<li><a class="reference internal" href="#id23">end_time</a></li>
+<li><a class="reference internal" href="#id24">ascii_s</a></li>
+<li><a class="reference internal" href="#id25">epoch_l</a></li>
+<li><a class="reference internal" href="#id26">micro_seconds_i</a></li>
+<li><a class="reference internal" href="#id27">type_s</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/receivers_g.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020 IRIS PASSCAL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/receivers_g.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
