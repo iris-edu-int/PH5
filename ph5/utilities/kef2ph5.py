@@ -82,7 +82,7 @@ def populateTables():
     k.open()
 
     while True:
-        n = k.read(10000)
+        n = k.read(1000000)
         if n == 0:
             err = "Empty kef file."
             break
