@@ -20,7 +20,7 @@ try:
 except ImportError:
     pass
 
-PROG_VERSION = '2021.47'
+PROG_VERSION = '2021.160'
 LOGGER = logging.getLogger(__name__)
 ZLIBCOMP = 6
 
@@ -342,6 +342,13 @@ class SortsGroup:
                 '/Experiment_g/Sorts_g',
                 name=array_name,
                 classname='Table')
+            self.ph5_t_array[array_name] = node
+        except IndexError:
+            node = self.ph5.get_node(
+                '/Experiment_g/Sorts_g',
+                name=array_name,
+                classname='Table')
+            self.ph5_t_array = {}
             self.ph5_t_array[array_name] = node
 
         ret, keys = read_table(node)

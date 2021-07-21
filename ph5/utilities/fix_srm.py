@@ -12,7 +12,7 @@ from ph5.core import ph5api, experiment, columns
 from ph5.utilities import nuke_table, kef2ph5 as K2T, tabletokef as T2K
 from ph5 import LOGGING_FORMAT
 
-PROG_VERSION = '2021.42'
+PROG_VERSION = '2021.159'
 LOGGER = logging.getLogger(__name__)
 
 
@@ -79,11 +79,21 @@ def reformat_das_t(ph5object, das_sn, ph5, path):
         ph5object: ph5 object of which das table has been deleted
     '''
     # get mini_file that keep the passed das's data
-    index_rows, keys = ph5object.ph5_g_maps.read_index()
+    index_rows, keys = ph5object.ph5_g_receivers.read_index()
+
+    mini_filename = None
     for i in index_rows:
         if i['serial_number_s'] == das_sn:
             mini_filename = i['external_file_name_s']
             break
+    if mini_filename is None:
+        raise Exception("DAS %s cannot be found in index table." % das_sn)
+
+    if not os.path.exists(os.path.join(path, mini_filename)):
+        raise Exception("external_file_name_s '%s' for DAS %s in index_t "
+                        "can't be found in %s." %
+                        (mini_filename, das_sn, path))
+
     # open mini ph5 file to reformat das_t from pn3 to pn4
     # because das_t is read-only when opened from ph5object
     exrec = experiment.ExperimentGroup(nickname=mini_filename,

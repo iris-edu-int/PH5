@@ -108,6 +108,20 @@ class TestExperiment_srm(TempDirTestCase, LogTestCase):
             'Array_t_001', ignore_srm=True)
         self.assertEqual(len(ret), 3)
 
+    def test_read_arrays_ph5_t_array_tabletype(self):
+        # ph5_t_array normally has type dict
+        # when more than one array_t(s) are added to ph5 with keftoph5,
+        # it has type table which will raise IndexError
+        # when trying to get the node from ph5_t_array
+        # => if it raise IndexError, force it to be a dict
+
+        path = os.path.join(self.home,
+                            'ph5/test_data/ph5_w_ph5_t_array_tabletype')
+        self.ph5_object = ph5api.PH5(path=path, nickname='master.ph5')
+        ret, keys = self.ph5_object.ph5_g_sorts.read_arrays('Array_t_002')
+        self.assertEqual(len(ret), 1)
+        self.assertEqual(len(keys), 38)
+
 
 if __name__ == "__main__":
     unittest.main()

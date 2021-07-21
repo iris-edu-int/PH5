@@ -125,6 +125,45 @@ class TestFixSRM_PH5Object(TempDirTestCase, LogTestCase):
             'sample_rate_multiplier_i',
             self.ph5object.ph5_g_receivers.current_t_das.colnames)
 
+    def test_delete_das_pn3_minifile_not_exist(self):
+        orgph5 = os.path.join(
+            self.home,
+            'ph5/test_data/ph5_no_srm/array_das')
+        self.ph5object = init_ph5(orgph5, self.tmpdir)
+        # clear external_file_name_s in index table
+        index_rows, keys = self.ph5object.ph5_g_receivers.read_index()
+        self.ph5object.ph5_g_receivers.nuke_index_t()
+        for i in index_rows:
+            i['external_file_name_s'] = 'test_file'
+            self.ph5object.ph5_g_receivers.populateIndex_t(i)
+
+        with self.assertRaises(Exception) as contxt:
+            fix_srm.delete_das(self.ph5object, 'Das_t_1X1111',
+                               'master.ph5', self.tmpdir)
+        self.assertEqual(
+            contxt.exception.message,
+            "external_file_name_s 'test_file' for DAS 1X1111 in index_t "
+            "can't be found in %s." % self.tmpdir)
+
+    def test_delete_das_pn3_das_notfound(self):
+        orgph5 = os.path.join(
+            self.home,
+            'ph5/test_data/ph5_no_srm/array_das')
+        self.ph5object = init_ph5(orgph5, self.tmpdir)
+        # clear external_file_name_s in index table
+        index_rows, keys = self.ph5object.ph5_g_receivers.read_index()
+        self.ph5object.ph5_g_receivers.nuke_index_t()
+        for i in index_rows:
+            i['serial_number_s'] = '1X1112'
+            self.ph5object.ph5_g_receivers.populateIndex_t(i)
+
+        with self.assertRaises(Exception) as contxt:
+            fix_srm.delete_das(self.ph5object, 'Das_t_1X1111',
+                               'master.ph5', self.tmpdir)
+        self.assertEqual(
+            contxt.exception.message,
+            "DAS 1X1111 cannot be found in index table.")
+
     def test_delete_array(self):
         # For adding array to ph5 from kef file, kef2ph5 will create table for
         # it, so delete_array will completly delete array_t from ph5.
