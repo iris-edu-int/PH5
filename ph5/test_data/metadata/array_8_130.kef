@@ -18,7 +18,7 @@
 	location/Y/units_s = degrees
 	id_s = 8001
 	location/Z/value_d = 1403
-	location/Z/units_s = m
+	location/Z/units_s = unknown
 	deploy_time/ascii_s = Wed May 18 10:48:00 2016
 	deploy_time/epoch_l = 1463568480
 	deploy_time/micro_seconds_i = 0

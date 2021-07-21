@@ -366,7 +366,9 @@ def check_lat_lon_elev(station):
                       % station['location/Y/value_d'])
     if station['location/Y/units_s'] in [None, '']:
         warnings.append("No Station location/Y/units_s value found.")
-
+    if station['location/Z/units_s'] in ['unknown', 'UNKNOWN', 'Unknown']:
+        warnings.append("location/Z/units_s is set as unknown."
+                        + " Consider updating this unit to m.")
     if station['location/Z/value_d'] == 0:
         warnings.append("Channel elevation seems to be 0. Is this correct???")
     if station['location/Z/units_s'] in [None, '']:

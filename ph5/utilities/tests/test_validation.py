@@ -530,6 +530,24 @@ class TestValidation_location(unittest.TestCase):
                    'location/Y/value_d': 0,
                    'location/Y/units_s': None,
                    'location/Z/value_d': 0,
+                   'location/Z/units_s': 'unknown'}
+        errors, warnings = validation.check_lat_lon_elev(station)
+        self.assertEqual(errors, [])
+        self.assertEqual(
+            warnings,
+            ['Channel longitude seems to be 0. Is this correct???',
+             'No Station location/X/units_s value found.',
+             'Channel latitude seems to be 0. Is this correct???',
+             'No Station location/Y/units_s value found.',
+             'location/Z/units_s is set as unknown. Consider'
+             + ' updating this unit to m.',
+             'Channel elevation seems to be 0. Is this correct???'])
+
+        station = {'location/X/value_d': 0,
+                   'location/X/units_s': '',
+                   'location/Y/value_d': 0,
+                   'location/Y/units_s': None,
+                   'location/Z/value_d': 0,
                    'location/Z/units_s': None}
         errors, warnings = validation.check_lat_lon_elev(station)
         self.assertEqual(errors, [])
